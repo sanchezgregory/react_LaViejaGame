@@ -7,13 +7,10 @@ import { CheckWinnerFrom, CheckEndGame } from './logics/board'
 import { WinnerModal } from './components/WinnerModal'
 import { saveGameToStorage, resetGameStorage } from './logics/storage'
 
-function App () {
-  console.log('rendering...')
+function App() {
 
   const [board, setBoard] = useState(() => {
-    console.log('inicializing board...')
     const boardFromStorage = window.localStorage.getItem('board')
-    console.log(boardFromStorage)
     if (boardFromStorage) return JSON.parse(boardFromStorage)
     return Array(9).fill(null)
   })
@@ -51,7 +48,7 @@ function App () {
 
     CheckEndGame(newBoard)
 
-    // Revisar si ha ganador
+    // Revisar si hay ganador
     const newWinner = CheckWinnerFrom(newBoard)
     if (newWinner) {
       confetti()
@@ -60,11 +57,6 @@ function App () {
       setWinner(false)
     }
   }
-
-  // Se renderi
-  useEffect(() => {
-    console.log('inicializing useEffect...')
-  }, [])
 
   return (
     <main className='board'>
